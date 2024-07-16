@@ -1,0 +1,427 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Pre-Release Humanoid Editor | Made by UmvtHw",
+   LoadingTitle = "Humanoid Editor v4",
+   LoadingSubtitle = "by UmvtHw, for safer experience.",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = true, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Pre-Release Loader (v4)",
+      Subtitle = "Pre-Release Access",
+      Note = "Hello, User!",
+      FileName = "TheKey", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"accessnumber4", "accessnumber1"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local MainTab = Window:CreateTab("Editor", nil) -- Title, Image
+local SettingTab = Window:CreateTab("Settings", nil) -- Title, Image
+
+local SettingSection = SettingTab:CreateSection("Settings")
+
+local MainSection = MainTab:CreateSection("WS/JP")
+
+Rayfield:Notify({
+   Title = "Editor Loaded",
+   Content = "Your editor is ready.",
+   Duration = 4,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Notif Closed")
+      end
+   },
+},
+})
+
+local Toggle = SettingTab:CreateToggle({
+   Name = "Safe Editor Makes You Unbannable.",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   Rayfield:Notify({
+   Title = "Safe Mode",
+   Content = "Safe Mode Opened/Closed Succesfully",
+   Duration = 4,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Notif Closed")
+      end
+   },
+},
+})
+   end,
+})
+
+local Toggle = SettingTab:CreateToggle({
+   Name = "Delay Executions",
+   CurrentValue = false,
+   Flag = "Toggle2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   Rayfield:Notify({
+   Title = "Safe Mode",
+   Content = "Delayed Executions for safer experience.",
+   Duration = 4,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Notif Closed")
+      end
+   },
+},
+})
+   end,
+})
+
+local Button = SettingTab:CreateButton({
+   Name = "Close Editor",
+   Callback = function()
+   Rayfield:Destroy()
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "Humanoid Walkspeed",
+   Range = {16, 500},
+   Increment = 1,
+   Suffix = "Power",
+   CurrentValue = 16,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "Humanoid JumpPower",
+   Range = {36, 500},
+   Increment = 1,
+   Suffix = "Power",
+   CurrentValue = 36,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+
+   end,
+})
+
+local MainSection = MainTab:CreateSection("Humanoid Control")
+
+local Button = MainTab:CreateButton({
+   Name = "Set Humanoid Health to 0",
+   Callback = function()
+        game.Players.LocalPlayer.Character.Humanoid.Health = 0
+   end,
+})
+
+local ModTab = Window:CreateTab("Modified Scripts", nil)
+local Section = ModTab:CreateSection("Modified Universal Scripts") 
+
+local Label = ModTab:CreateLabel("Abusing these script to do serversided things may get your banned, use it at your own risk.")
+
+local Label = SettingTab:CreateLabel("If you want to use scripts at your main account, open these")
+
+local Button = ModTab:CreateButton({
+   Name = "Modified Yield",
+   Callback = function()
+   loadstring(game:HttpGet('https://pastebinp.com/raw/ZfLQdmDJ'))()
+   Rayfield:Notify({
+   Title = "Modify Manager",
+   Content = "Modified Yield has been loaded successfully.",
+   Duration = 6.5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Tap = true")
+      end
+   },
+},
+})
+   end,
+})
+
+local Button = ModTab:CreateButton({
+   Name = "Modified Aimbot Script",
+   Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/Exunys/Aimbot-Script/main/Aimbot%20Script.lua'))()
+   Rayfield:Notify({
+   Title = "Modify Manager",
+   Content = "Your modified aimbot script is loaded successfully.",
+   Duration = 4,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Tap = true")
+      end
+   },
+},
+})
+   end,
+})
+
+local Button = ModTab:CreateButton({
+   Name = "Modified Infinite Jump",
+   Callback = function()
+   _G.infinjump = true   local Player = game:GetService("Players").LocalPlayer local Mouse = Player:GetMouse() Mouse.KeyDown:connect(function(k) if _G.infinjump then if k:byte() == 32 then Humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid") Humanoid:ChangeState("Jumping") wait(0.1) Humanoid:ChangeState("Seated") end end end)   local Player = game:GetService("Players").LocalPlayer local Mouse = Player:GetMouse() Mouse.KeyDown:connect(function(k) k = k:lower() if k == "f" then if _G.infinjump == true then _G.infinjump = false else _G.infinjump = true end end end)
+   Rayfield:Notify({
+   Title = "Modify Manager",
+   Content = "Modified Infinite Jump Script is loaded successfully",
+   Duration = 4,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Tap = True")
+      end
+   },
+},
+})
+   end,
+})
+
+local Section = ModTab:CreateSection("Modified Visuals")
+
+
+local Button = ModTab:CreateButton({
+   Name = "Modified Extra-Sensory Perception Script",
+   Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
+   Rayfield:Notify({
+   Title = "Modify Manager",
+   Content = "Your Modified Extra-Sensory Perception Script is loaded successfully.",
+   Duration = 4,
+   Image = nil,
+   Actions = {
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Tap = true")
+      end
+   },
+},
+})
+   end,
+})
+
+local Button = ModTab:CreateButton({
+   Name = "Modified Box Extra-Sensory Perception Script",
+   Callback = function()
+   loadstring(game:HttpGet('https://pastebinp.com/raw/BFmpukxt'))()
+   Rayfield:Notify({
+   Title = "Modify Manager",
+   Content = "Your Modified Box Extra-Sensory Perception Script is loaded successfully.",
+   Duration = 4,
+   Image = nil,
+   Actions = {
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Tap = true")
+      end
+   },
+},
+})
+   end,
+})
+
+local UtilTab = Window:CreateTab("Utilites", nil)
+
+local Section = UtilTab:CreateSection("Utilities")
+
+local Toggle = UtilTab:CreateToggle({
+   Name = "FullBright",
+   CurrentValue = false,
+   Flag = "Toggle3",
+   Callback = function()
+   if not _G.FullBrightExecuted then
+
+	_G.FullBrightEnabled = false
+
+	_G.NormalLightingSettings = {
+		Brightness = game:GetService("Lighting").Brightness,
+		ClockTime = game:GetService("Lighting").ClockTime,
+		FogEnd = game:GetService("Lighting").FogEnd,
+		GlobalShadows = game:GetService("Lighting").GlobalShadows,
+		Ambient = game:GetService("Lighting").Ambient
+	}
+
+	game:GetService("Lighting"):GetPropertyChangedSignal("Brightness"):Connect(function()
+		if game:GetService("Lighting").Brightness ~= 1 and game:GetService("Lighting").Brightness ~= _G.NormalLightingSettings.Brightness then
+			_G.NormalLightingSettings.Brightness = game:GetService("Lighting").Brightness
+			if not _G.FullBrightEnabled then
+				repeat
+					wait()
+				until _G.FullBrightEnabled
+			end
+			game:GetService("Lighting").Brightness = 1
+		end
+	end)
+
+	game:GetService("Lighting"):GetPropertyChangedSignal("ClockTime"):Connect(function()
+		if game:GetService("Lighting").ClockTime ~= 12 and game:GetService("Lighting").ClockTime ~= _G.NormalLightingSettings.ClockTime then
+			_G.NormalLightingSettings.ClockTime = game:GetService("Lighting").ClockTime
+			if not _G.FullBrightEnabled then
+				repeat
+					wait()
+				until _G.FullBrightEnabled
+			end
+			game:GetService("Lighting").ClockTime = 12
+		end
+	end)
+
+	game:GetService("Lighting"):GetPropertyChangedSignal("FogEnd"):Connect(function()
+		if game:GetService("Lighting").FogEnd ~= 786543 and game:GetService("Lighting").FogEnd ~= _G.NormalLightingSettings.FogEnd then
+			_G.NormalLightingSettings.FogEnd = game:GetService("Lighting").FogEnd
+			if not _G.FullBrightEnabled then
+				repeat
+					wait()
+				until _G.FullBrightEnabled
+			end
+			game:GetService("Lighting").FogEnd = 786543
+		end
+	end)
+
+	game:GetService("Lighting"):GetPropertyChangedSignal("GlobalShadows"):Connect(function()
+		if game:GetService("Lighting").GlobalShadows ~= false and game:GetService("Lighting").GlobalShadows ~= _G.NormalLightingSettings.GlobalShadows then
+			_G.NormalLightingSettings.GlobalShadows = game:GetService("Lighting").GlobalShadows
+			if not _G.FullBrightEnabled then
+				repeat
+					wait()
+				until _G.FullBrightEnabled
+			end
+			game:GetService("Lighting").GlobalShadows = false
+		end
+	end)
+
+	game:GetService("Lighting"):GetPropertyChangedSignal("Ambient"):Connect(function()
+		if game:GetService("Lighting").Ambient ~= Color3.fromRGB(178, 178, 178) and game:GetService("Lighting").Ambient ~= _G.NormalLightingSettings.Ambient then
+			_G.NormalLightingSettings.Ambient = game:GetService("Lighting").Ambient
+			if not _G.FullBrightEnabled then
+				repeat
+					wait()
+				until _G.FullBrightEnabled
+			end
+			game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+		end
+	end)
+
+	game:GetService("Lighting").Brightness = 1
+	game:GetService("Lighting").ClockTime = 12
+	game:GetService("Lighting").FogEnd = 786543
+	game:GetService("Lighting").GlobalShadows = false
+	game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+
+	local LatestValue = true
+	spawn(function()
+		repeat
+			wait()
+		until _G.FullBrightEnabled
+		while wait() do
+			if _G.FullBrightEnabled ~= LatestValue then
+				if not _G.FullBrightEnabled then
+					game:GetService("Lighting").Brightness = _G.NormalLightingSettings.Brightness
+					game:GetService("Lighting").ClockTime = _G.NormalLightingSettings.ClockTime
+					game:GetService("Lighting").FogEnd = _G.NormalLightingSettings.FogEnd
+					game:GetService("Lighting").GlobalShadows = _G.NormalLightingSettings.GlobalShadows
+					game:GetService("Lighting").Ambient = _G.NormalLightingSettings.Ambient
+				else
+					game:GetService("Lighting").Brightness = 1
+					game:GetService("Lighting").ClockTime = 12
+					game:GetService("Lighting").FogEnd = 786543
+					game:GetService("Lighting").GlobalShadows = false
+					game:GetService("Lighting").Ambient = Color3.fromRGB(178, 178, 178)
+				end
+				LatestValue = not LatestValue
+			end
+		end
+	end)
+end
+
+_G.FullBrightExecuted = true
+_G.FullBrightEnabled = not _G.FullBrightEnabled
+Rayfield:Notify({
+   Title = "Modify Manager",
+   Content = "Click again to disable/enable fullbright",
+   Duration = 3,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Tap = True")
+      end
+   },
+},
+})
+   end,
+})
+
+local Button = UtilTab:CreateButton({
+   Name = "CTRL + Click to teleport.",
+   Callback = function()
+   local UIS = game:GetService("UserInputService")
+
+local Player = game.Players.LocalPlayer
+local Mouse = Player:GetMouse()
+
+
+function GetCharacter()
+   return game.Players.LocalPlayer.Character
+end
+
+function Teleport(pos)
+   local Char = GetCharacter()
+   if Char then
+       Char:MoveTo(pos)
+   end
+end
+
+
+UIS.InputBegan:Connect(function(input)
+   if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+       Teleport(Mouse.Hit.p)
+   end
+end)
+   Rayfield:Notify({
+   Title = "CTRL + Click",
+   Content = "CTRL + Click to teleport at your mouse.",
+   Duration = 3,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Close",
+         Callback = function()
+         print("Tap = True")
+      end
+   },
+},
+})
+   end,
+})
+
+local Label = UtilTab:CreateLabel("If you want fly, use Modified Yield.")
